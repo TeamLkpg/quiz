@@ -30,10 +30,17 @@
     justify-content: space-evenly;
     
 }
+
 #quiz button{
     font-size: large;
     padding: 3vh 7.5vh;
     background-color: rgb(104, 237, 122);
+}
+
+#quiz button #hideAnswer{
+  font-size: large;
+  padding: 3vh 7.5vh;
+  background-color: rgb(104, 0 , 0);
 }
 
 body {
@@ -43,8 +50,10 @@ body {
 
 .hidden
 {
-    display: none;
+    background-color: blue;
 }
+
+
 .tries{
     position: static;
     top:5%;

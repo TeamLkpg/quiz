@@ -49,6 +49,7 @@ const quizdata = [
 
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
+
 /* Vidare till nästa fråga
 const nextQuestionButton = document.getElementById(nextBtn);
 */
@@ -60,9 +61,10 @@ let currentQuestionTries = 0;
 
 
 function showQuestion() {
+    showTries();
     const question = quizdata[currentQuestion];
     questionElement.innerText = question.question;
-
+   
     optionsElement.innerHTML = "";
     question.options.forEach((option) => {
     const button = document.createElement("button");
@@ -91,17 +93,20 @@ function selectAnswer(input) {
             alert("Quiz is over1");
         }
         currentQuestionTries = 0;
+        showTries();
         showQuestion();
     }
     else if (currentQuestion < quizdata.length) {
 
-        if (currentQuestionTries < quizdata[currentQuestion].options.length-1) {
+        if (currentQuestionTries < quizdata[currentQuestion].options.length) {
             hideOption(currentQuestionTries);
+            currentQuestionTries = 0;
+            showQuestion();
         }
         else {
-        currentQuestion++;
-        currentQuestionTries = 0;
-        showQuestion();
+
+             alert("All tries are used");
+             /*fail?!*/
         }
     } 
     else {
@@ -111,8 +116,11 @@ function selectAnswer(input) {
 
 
 function hideOption(input) {
-  const hideElement = quizdata[currentQuestion].hideOrder[input];
-  hideElement.classList.toggle("hidden");
+  alert("fel");
+  const hideElement = quizdata[currentQuestion].hideOrder[input-1];
+  const hide2 = quizdata.options[hideElement];
+  const optionsElement = document.getElementById(hide2.innerHTML);
+  optionsElement.style.color = "red"; 
   currentQuestionTries++;
 }
 
