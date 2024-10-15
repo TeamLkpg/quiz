@@ -21,7 +21,7 @@ const quizdata = [
     options: ["Blue Whale", "Elephant", "Giraffe", "Hippopotamus"],
     hideOrder: [2, 1, 3],
     answer: "Blue Whale",
-  },/*
+  },
   {
     question: "What is the capital of Spain?",
     options: ["Barcelona", "Madrid", "Seville", "Valencia"],
@@ -31,9 +31,9 @@ const quizdata = [
   {
     question: "What is the largest planet in our solar system?",
     options: ["jupiter", "mercury", "earth", "mars"],
-    hideOrder: [2, 0, 3],
+    hideOrder: [2, 1, 3],
     answer: "jupiter",
-  },*/
+  },
 ];
 
 /*
@@ -82,7 +82,6 @@ function showTries(){
 function selectAnswer(input) {
     const selectedAnswer = input.target;
     const answer = quizdata[currentQuestion].answer;
-    showTries();
     currentQuestionTries++;
 
     if (selectedAnswer.innerText === answer) {
@@ -90,7 +89,7 @@ function selectAnswer(input) {
         currentQuestion++;
         currentQuestionTries = 0;
         if (currentQuestion > quizdata.length-1) {
-            alert("Quiz is over1");
+            alert("Quiz is over1, your score is " + score);
         }
         currentQuestionTries = 0;
         showTries();
@@ -115,6 +114,7 @@ function selectAnswer(input) {
 }
 
 
+/*Försök till att ändra utskrift*/
 function hideOption(input) {
   alert("fel");
   const hideElement = quizdata[currentQuestion].hideOrder[input-1];
