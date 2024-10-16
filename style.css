@@ -6,53 +6,21 @@
 
 .flex-box{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-   
 }
-.flex-flex-box{
-    display: flex;
-    flex-flow: row;
-}
-#quiz {
-  display: flex;
-  justify-items: center;
-  padding: 3%;
-  margin: 0.5%;
-  width: fit-content;
-  flex-direction: column;
-  border: 5px solid #04AA6D;
 
-  
-}
 #options{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    
+    flex-direction: column;
+    justify-content: center;
 }
 
-#quiz button{
-    font-size: large;
-    padding: 3vh 7.5vh;
-    background-color: rgb(104, 237, 122);
-}
-
-#quiz button #hideAnswer{
-  background-color: rgb(104, 0 , 0);
-}
-
-body {
-  background-color: #333;
-  color: #fff;
-}
-
-.hidden
-{
-    background-color: blue;
+.hide{
+  display: none;
 }
 
 
-.tries{
-    position: static;
-    top:5%;
-}
+
+
+
