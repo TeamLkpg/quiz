@@ -2,18 +2,119 @@
   --toggle-switch-bg: #232428;
   --toggle-border: #232428;
   --toggle-bg: #fff;
+  --background-box-colour: rgb(97, 161, 218);
+  --font-colour: black;
+  
 }
 
-.flex-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: aliceblue;
+  color: var(--font-colour);
+  margin:0;
 }
 
-#options{
+header{
+  height: 15vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-box-colour);
+}
+
+.main{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content:space-evenly;
+    padding-left: 10vw;
+    padding-right: 20vw;
+    padding-top: 10vh;
+}
+
+.infoBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 2vw;
+  border: 1px solid #f0f0f0;
+  width:30vw;
+  background-color: var(--background-box-colour);
+}
+
+.infoScoreAndTime{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.timeBox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+}
+
+.scoreBox{
+  display: flex;
+  flex-direction: row;
+}
+
+.quizBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f0f0f0;
+  width: 50vw;
+  background-color: var(--background-box-colour);
+  
+
+}
+
+.questionBox{ /*This is question*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vh;
+ 
+}
+
+.question{
+}
+
+.quizBox h1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly
+}
+
+
+.optionsBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5vh;
+  height: 45vh;
+  border: 1px solid #f0f0f0;
+}
+
+.option{
+  padding: 1vh;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  margin:2vh;
+  text-align: center;
+  width: 15vw;
+  height: auto;
+}
+
+.option:hover{
+  background-color: #e0e0e0;
+  cursor: pointer;
 }
 
 .hide{
@@ -21,6 +122,22 @@
 }
 
 
-
+@keyframes toneQuestion{
+  0% {
+    opacity: 0%;
+  }
+  25%{
+    opacity: 25%;
+  }
+  50%{
+    opacity: 50%;
+  }
+  75%{
+    opacity: 75%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
 
 
