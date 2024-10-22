@@ -4,24 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>document</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
 
   <body>
-    <div class="flex-box">
-      <div id="question"></div>
-      
-      <div id="options">
-     
-          <div id="option-1"></div>
-          <div id="option-2"></div>
-          <div id="option-3"></div>
-          <div id="option-4"></div>
+    <div class="start" id="startBox">
+      <h1>Welcome to the Quiz</h1>
+      <div>
+      <p class="startText"> You have 60 seconds to answer each question</p>
+      <p class="startText"> Correct answers award 5 points</p>
+      <p class="startText"> Incorrect answers deduct 1 point</p>
+      <p class="startText"> <br><br> Press the button below to start the quiz</p>
+      </div>
+      <button id="startButton" class="button">Start</button>
+    </div>
+    <div class="endHidden" id="endBox">
+      <h1>End of quiz</h1>
+      <p>Your final score is:&nbsp<div id="finalPoints"></div></p>
+      <p>Press the button below to try again</p>
+      <button id="restartButton" class="button">Restart quiz</button>
+    </div>
+
+    <div class="mainHidden" id="main">
+      <div class="quizBox">
+        <h1>
+          Question&nbsp
+          <div id="questionNumber"></div>
+          /10
+        </h1>
+        <!-- Gör reaktiv!! -->
+        <div class="questionBox" id="questionBox">
+          <div class="question" id="question"></div>
+        </div>
+        <div id="options" class="optionsBox">
+          <div id="option-1" class="option"></div>
+          <div id="option-2" class="option"></div>
+          <div id="option-3" class="option"></div>
+          <div id="option-4" class="option"></div>
+        </div>
+      </div>
+
+      <div class="infoBox">
+        <p class="infoText">Stats</p>
+        <div class="infoScoreAndTime">
+          <div class="scoreBox">
+            <div>Score:&nbsp</div>
+            <div class="scoreElement" id="scoreID"></div>
+          </div>
+          <div class="timeBox">
+            <div>Time:&nbsp</div>
+            <div class="timeElement" id="timeID"></div>
+          </div>
+        </div>
       </div>
     </div>
-  
-  
-  <script src="script.js"></script>
-  
+
+    <script src="time.js"></script>
+    <script src="script.js"></script>
+    
   </body>
 </html>
