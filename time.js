@@ -33,7 +33,7 @@ class Time {
             this.logToHTML(this.time);
         } 
         else {
-            this.logToHTML("TIMES UP!");
+            //this.logToHTML("TIMES UP!");
             clearInterval(this.interval); 
         }
     }

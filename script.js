@@ -13,7 +13,8 @@ const quizdata = [
       "Mohammad Abdollahi",
     ],
     answer: "Alan Turing",
-  },
+  }
+  ,
   {
     question: "What is the largest mammal in the world?",
     options: ["Blue Whale", "Elephant", "Giraffe", "Hippopotamus"],
@@ -30,7 +31,7 @@ const quizdata = [
     answer: "jupiter",
   },
   {
-    question: "What is the largest country in the world?", 
+    question: "What is the largest country in the world?",
     options: ["Canada", "China", "Russia", "United States"],
     answer: "Russia",
   },
@@ -45,40 +46,66 @@ const quizdata = [
     answer: "Paris",
   },
   {
-    question: "What is the capital of Australia?", 
+    question: "What is the capital of Australia?",
     options: ["Melbourne", "Sydney", "Brisbane", "Canberra"],
     answer: "Canberra",
-  }
+  },
 ];
+
+
+/*CONSTS*/
 
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
 const questionToneElement = document.getElementById("questionBox");
-var questionNumber = 1;
-var points=0;
 const scoreElement = document.getElementById("scoreID");
-
-// Start timer
 const timer = new Time();
 
 
-function setOpacity(){
-  questionElement.style.opacity = "100%";
-}
+/*VARIABLES*/
 
+var questionNumber = 1;
 var questionIndex = 0;
+var points = 0;
+
+
+/*EVENT LISTENERS*/
 
 for (let i of optionsElement.children) {
   i.addEventListener("click", selectOption);
 }
 
+
+/*GAME LOGIC FUNCTIONS*/
+var animationInterval = null;
+
+
+//Opacity Function Loop di Loop
+function textAnimation(input){
+  
+  var opacityLevel = 0;
+  clearInterval(animationInterval);
+  animationInterval = setInterval(doStuff, 15)
+  function doStuff(){
+    if (opacityLevel == 100){
+      clearInterval(animationInterval);
+    }
+    else{
+      opacityLevel++
+      input.style.opacity = opacityLevel + "%";
+    }
+  }
+}
+
 function showQuestion() {
   var currentQuestion = quizdata[questionIndex].question;
+  var textAnimationElement = document.getElementById("questionBox");
+  textAnimationElement.style.opacity = "0%";
   questionElement.innerHTML = currentQuestion;
-  
-  //questionToneElement.animate({opacity: "100%", animation-fill-mode: "forward"},3000)
-  
-  updQuestionNumber(questionNumber);
+
+  textAnimation(textAnimationElement);
+
+  updateQuestionNumber(questionNumber);
   timer.countdownTimer();
   scoreElement.innerHTML = points;
 }
@@ -90,43 +117,86 @@ function showOptions() {
   }
 }
 
-function selectOption() {
-  scoreElement.innerHTML = points;
-  if (this.innerHTML == quizdata[questionIndex].answer) { /* Svarat rätt */ 
-    questionIndex++;
-    if (questionIndex >= quizdata.length) { /* Om quizet är slut */
-      endOfQuiz();
-      return;
-    } else { /* VIsa nästa fråga*/
-      resetOptions();
-      points+=5;
-      showQuestion();
-      showOptions();
-    }
-  } else { /* Svarat fel */
-    this.style.backgroundColor = "red";
-    points--;
-  }
-}
-
-function endOfQuiz() {
-  alert("Tack för att du deltog!");
-  for (let i of optionsElement.children) {
-    i.removeEventListener("click", selectOption);
-  }
-}
-
 function resetOptions() {
   for (let i of optionsElement.children) {
-    i.style.backgroundColor = "white";
+    i.style.removeProperty("background-color");
   }
 }
 
-showQuestion();
-showOptions();
+function selectOption() {
+  if (this.innerHTML == quizdata[questionIndex].answer) {
+    questionIndex++;
+    points += 5;
+    if (questionIndex >= quizdata.length) {
+      endQuiz();
+      return;
+    } else {
+      resetOptions();
+      
+      showQuestion();
+      showOptions();
+      scoreElement.innerHTML = points;
+      
+    }
+  } else {
+    this.style.backgroundColor = "red";
+    points--;
+    scoreElement.innerHTML = points;
+  }
+}
 
-function updQuestionNumber(input){
-  document.getElementById("questionNumber").innerHTML = "";
+function updateQuestionNumber(input) {
   document.getElementById("questionNumber").innerHTML = input;
   questionNumber++;
 }
+
+function setOpacity() {
+  questionElement.style.opacity = "100%";
+}
+
+/*Start and end screen*/
+
+const startElement = document.getElementById("startBox");
+const mainElement = document.getElementById("main");
+const endElement = document.getElementById("endBox");
+const buttonElement = document.getElementById("startButton");
+const resetButton = document.getElementById("restartButton");
+
+buttonElement.addEventListener("click", startQuiz);
+
+function startQuiz() {
+  
+  startElement.classList.remove("start");
+  startElement.classList.add("startHidden");
+  mainElement.classList.remove("mainHidden");
+  mainElement.classList.add("main");
+
+  showQuestion();
+  showOptions();
+}
+
+function endQuiz() {
+  mainElement.classList.remove("main");
+  mainElement.classList.add("mainHidden");
+  endElement.classList.remove("endHidden");
+  endElement.classList.add("end");
+
+  resetButton.addEventListener("click", resetQuiz);
+
+  var endScore = document.getElementById("finalPoints");
+  endScore.innerHTML = points;
+}
+
+function resetQuiz(){
+  mainElement.classList.remove("mainHidden");
+  mainElement.classList.add("main");
+  endElement.classList.remove("end");
+  endElement.classList.add("endHidden");
+  questionIndex = 0;
+  questionNumber = 1;
+  points = 0;
+  showQuestion();
+  showOptions();
+}
+
+
