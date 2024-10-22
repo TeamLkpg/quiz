@@ -1,6 +1,6 @@
 class Time {
     constructor() {
-        this.time = 60;
+        this.time = 30;
         this.interval = null;
         this.start = false;
     }
@@ -14,7 +14,7 @@ class Time {
     }
 
     resetTime() {
-        this.time = 60;
+        this.time = 30;
     }
 
     countdown() {
@@ -22,7 +22,7 @@ class Time {
         this.clearTimeInHTML();
         var idOfTime = document.getElementById("timeID");
 
-        if(this.time > 12){
+        if(this.time > 6){
             idOfTime.style.color = '#000000';
         }
         else{
@@ -68,7 +68,7 @@ class Time {
 
     countdownTimer(){
         if(this.start){
-            this.setTime(60);
+            this.setTime(30);
         }
         else{
             this.startCountdown();
@@ -76,13 +76,12 @@ class Time {
         }
     }
     
-
     endQuiz() {
         const mainElement = document.getElementById("main");
         const endElement = document.getElementById("endBox");
 
         endElement.children[0].innerHTML = "Your time is up! ";
-        endElement.children[1].innerHTML = "Reload the poage to try again";
+        endElement.children[1].innerHTML = "Reload the page to try again";
         endElement.children[4].remove();
         endElement.children[4].remove();
 
