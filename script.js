@@ -163,7 +163,7 @@ function setOpacity() {
   questionElement.style.opacity = "100%";
 }
 
-/*Start and end screen*/
+/*START AND END SCREEN*/
 
 const startElement = document.getElementById("startBox");
 const mainElement = document.getElementById("main");
