@@ -20,13 +20,15 @@ class Time {
     countdown() {
         this.time -= 1;
         this.clearTimeInHTML();
-        var IdOfTime = document.getElementById("timeID");
+        var idOfTime = document.getElementById("timeID");
 
-        if(this.time > 10){
-            IdOfTime.style.color = '#000000';
+        if(this.time > 12){
+            idOfTime.style.color = '#000000';
         }
         else{
-            IdOfTime.style.color = '#CC0000';
+            idOfTime.style.color = '#CC0000';
+            idOfTime.style.fontSize = 'x-large';
+            idOfTime.style.fontWeight = 'bold';
         }
 
         if (this.time > 0) {
@@ -35,6 +37,7 @@ class Time {
         else {
             this.logToHTML("TIMES UP!");
             clearInterval(this.interval); 
+            this.endQuiz();
         }
     }
 
@@ -71,5 +74,21 @@ class Time {
             this.startCountdown();
             this.start = true;
         }
+    }
+    
+
+    endQuiz() {
+        const mainElement = document.getElementById("main");
+        const endElement = document.getElementById("endBox");
+
+        endElement.children[0].innerHTML = "Your time is up! ";
+        endElement.children[1].innerHTML = "Reload the poage to try again";
+        endElement.children[4].remove();
+        endElement.children[4].remove();
+
+        mainElement.classList.remove("main");
+        mainElement.classList.add("mainHidden");
+        endElement.classList.remove("endHidden");
+        endElement.classList.add("end");
     }
 }

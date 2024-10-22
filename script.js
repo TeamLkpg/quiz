@@ -13,8 +13,7 @@ const quizdata = [
       "Mohammad Abdollahi",
     ],
     answer: "Alan Turing",
-  }
-  ,
+  },
   {
     question: "What is the largest mammal in the world?",
     options: ["Blue Whale", "Elephant", "Giraffe", "Hippopotamus"],
@@ -49,6 +48,16 @@ const quizdata = [
     question: "What is the capital of Australia?",
     options: ["Melbourne", "Sydney", "Brisbane", "Canberra"],
     answer: "Canberra",
+  },
+  {
+    question: "What is the capital of Canada?",
+    options: ["Montreal", "Toronto", "Vancouver", "Ottawa"],
+    answer: "Ottawa",
+  },
+  {
+    question: "What is the capital of the United States?",
+    options: ["New York", "Los Angeles", "Washington D.C.", "Chicago"],
+    answer: "Washington D.C.",
   },
 ];
 
@@ -198,5 +207,3 @@ function resetQuiz(){
   showQuestion();
   showOptions();
 }
-
-

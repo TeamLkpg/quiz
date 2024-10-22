@@ -10,18 +10,20 @@
 
   <body>
     <div class="start" id="startBox">
-      <!-- <p class="startText">Welcome to the Quiz</p>
-      <p class="startText">Press the button to start</p>-->
-      <p class="startText">
-        Welcome to the Quiz<br />
-        Press the button to start
-      </p>
+      <h1>Welcome to the Quiz</h1>
+      <div>
+      <p class="startText"> You have 60 seconds to answer each question</p>
+      <p class="startText"> Correct answers award 5 points</p>
+      <p class="startText"> Incorrect answers deduct 1 point</p>
+      <p class="startText"> <br><br> Press the button below to start the quiz</p>
+      </div>
       <button id="startButton" class="button">Start</button>
     </div>
     <div class="endHidden" id="endBox">
-      <p class="EndText">End of quiz</p>
+      <h1>End of quiz</h1>
       <p>Your final score is:&nbsp<div id="finalPoints"></div></p>
-      <button id="restartButton" class="button">Try again</button>
+      <p>Press the button below to try again</p>
+      <button id="restartButton" class="button">Restart quiz</button>
     </div>
 
     <div class="mainHidden" id="main">
@@ -44,14 +46,14 @@
       </div>
 
       <div class="infoBox">
-        <p class="infoText">Welcome to the Quiz</p>
+        <p class="infoText">Stats</p>
         <div class="infoScoreAndTime">
           <div class="scoreBox">
-            <div>Score:</div>
+            <div>Score:&nbsp</div>
             <div class="scoreElement" id="scoreID"></div>
           </div>
           <div class="timeBox">
-            <div>Time:</div>
+            <div>Time:&nbsp</div>
             <div class="timeElement" id="timeID"></div>
           </div>
         </div>
